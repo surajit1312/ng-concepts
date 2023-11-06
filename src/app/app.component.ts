@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { LogMethod } from './decorators/method.decorator';
 import { LogClass } from './decorators/class.decorator';
 import { LogProperty } from './decorators/property.decorator';
+import { LogParam } from './decorators/parameter.decorator';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,10 @@ export class AppComponent implements OnInit {
 
   decrement(): void {
     this.counter--;
+  }
+
+  onClickTestParamDecorator(x: any, @LogParam() y: any): void {
+    console.log(x, y);
   }
 }
 

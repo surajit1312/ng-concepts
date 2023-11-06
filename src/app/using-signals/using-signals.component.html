@@ -1,0 +1,21 @@
+<h2>Using Angular Signals</h2>
+<div class="row">
+  <input
+    type="text"
+    name="title"
+    id="title"
+    [value]="title()"
+    (keyup)="onTitleChange($event)"
+  />
+</div>
+<div class="row">Title: {{ title() }}</div>
+
+<div class="row">
+  <button (click)="onAddUserUsingUpdate(); onAddUserUsingMutate()">
+    Add User
+  </button>
+  <ul>
+    <li *ngFor="let user of users()">{{ user?.name }}</li>
+  </ul>
+  <div class="row">Number of Users: {{ usersTotal() }}</div>
+</div>

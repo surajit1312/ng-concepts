@@ -3,15 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UsingSignalsComponent } from './using-signals/using-signals.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, UsingSignalsComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [
     {
       provide: 'MyInjectService',
@@ -21,9 +17,9 @@ import { AppComponent } from './app.component';
             console.log('Hello from MyInjectService');
           },
         };
-      }
-    }
+      },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

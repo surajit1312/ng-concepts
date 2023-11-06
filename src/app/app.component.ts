@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { LogMethod } from './decorators/method.decorator';
 import { LogClass } from './decorators/class.decorator';
+import { LogProperty } from './decorators/property.decorator';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { LogClass } from './decorators/class.decorator';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  @LogProperty()
+  counter: number = 0;
   constructor(@Inject('MyInjectService') private myService: any) {}
 
   ngOnInit(): void {
@@ -26,6 +29,14 @@ export class AppComponent implements OnInit {
 
   onClickTestClassDecorator(): void {
     this.createClass();
+  }
+
+  increment(): void {
+    this.counter++;
+  }
+
+  decrement(): void {
+    this.counter--;
   }
 }
 

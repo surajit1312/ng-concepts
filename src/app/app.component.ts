@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { LogMethod } from './decorators/method.decorator';
+import { LogClass } from './decorators/class.decorator';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,15 @@ export class AppComponent implements OnInit {
   }
 
   @LogMethod({ shouldLogTime: true })
-  onClickTestMethodDecorator() {
+  onClickTestMethodDecorator(): void {
     console.log('Called from inside method -> onClickTestMethodDecorator');
   }
+
+  createClass(): void {
+    const testClass: TestClass = new TestClass();
+    console.log('Test class has been created', testClass);
+  }
 }
+
+@LogClass({ prefix: 'Hello' })
+export class TestClass {}

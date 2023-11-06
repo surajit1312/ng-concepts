@@ -1,0 +1,42 @@
+<h2>Using RxJS Operators</h2>
+<div class="row">
+  <h3>Using users$</h3>
+  <div *ngFor="let user of users$ | async">
+    {{ user.firstName }} {{ user.lastName }}
+  </div>
+</div>
+<div class="row">
+  <h3>Using userNames$</h3>
+  <div *ngFor="let user of userNames$ | async">
+    {{ user }}
+  </div>
+</div>
+<div class="row">
+  <h3>Using userNames$</h3>
+  <div *ngFor="let user of filteredUsers$ | async">
+    {{ user.firstName }} {{ user.lastName }}
+  </div>
+</div>
+<div class="row">
+  <h3>Using filteredUsersLastName$</h3>
+  <div *ngFor="let user of filteredUsersLastName$ | async">
+    {{ user }}
+  </div>
+</div>
+
+<div class="row" *ngIf="data$ | async as data">
+  <h3>Using combineLatest</h3>
+  ------------------------------
+  <div *ngFor="let user of data.users">
+    {{ user.firstName }} {{ user.lastName }}
+  </div>
+  ------------------------------
+  <div *ngFor="let user of data.userNames">
+    {{ user }}
+  </div>
+  ------------------------------
+  <div *ngFor="let user of data.filteredUsers">
+    {{ user.firstName }} {{ user.lastName }}
+  </div>
+  ------------------------------
+</div>

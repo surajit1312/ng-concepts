@@ -1,17 +1,25 @@
-<h2>Ng-Concepts</h2>
-<button (click)="onClickTestMethodDecorator()">Test Method Decorator</button>
-<button (click)="onClickTestClassDecorator()">Test Class Decorator</button>
-<div class="row">
-  <span>
-    <button (click)="increment()">Counter++</button>
-  </span>
-  <span>
-    <button (click)="decrement()">Counter--</button>
-  </span>
-</div>
-<div class="row">
-  <label>Counter: {{ counter }}</label>
-</div>
-<button (click)="onClickTestParamDecorator(1, 2)">Test Param Decorator</button>
-<app-using-signals></app-using-signals>
-<app-using-rxjs-maps></app-using-rxjs-maps>
+<span style="float: left">
+  <h2>Ng-Concepts</h2>
+  <button (click)="onClickTestMethodDecorator()">Test Method Decorator</button>
+  <button (click)="onClickTestClassDecorator()">Test Class Decorator</button>
+  <div class="row">
+    <span>
+      <button (click)="increment()">Counter++</button>
+    </span>
+    <span>
+      <button (click)="decrement()">Counter--</button>
+    </span>
+  </div>
+  <div class="row">
+    <label>Counter: {{ counter }}</label>
+  </div>
+  <button (click)="onClickTestParamDecorator(1, 2)">
+    Test Param Decorator
+  </button>
+  <app-using-signals></app-using-signals>
+  <app-using-rxjs-maps></app-using-rxjs-maps>
+</span>
+<div class="vl"></div>
+<span style="float: right">
+  <app-using-rxjs-operators></app-using-rxjs-operators>
+</span>

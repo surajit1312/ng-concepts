@@ -1,0 +1,32 @@
+<h2>Using ng-template</h2>
+<div class="article" *ngIf="article; else loadingTemplate">
+  {{ article.title }}
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="row">Loading</div>
+</ng-template>
+
+<!--  Angular writes the above code as below -->
+<!-- <ng-template [ngIf]="article" [ngIfElse]="loadingTemplate">
+    <div class="article">
+        {{ article.title }}
+    </div>
+</ng-template>
+<ng-template #loadingTemplate>
+    <div class="row">
+        Loading...
+    </div>
+</ng-template> -->
+
+<h2>Using ngTemplateOutlet</h2>
+<ng-container
+  *ngTemplateOutlet="
+    articleTemplate;
+    context: { article: { title: 'Param from ngTemplateOutlet' } }
+  "
+>
+</ng-container>
+<ng-template #articleTemplate let-article="article">
+  <div class="row">Article Template loaded {{ article.title }}</div>
+</ng-template>

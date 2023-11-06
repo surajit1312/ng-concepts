@@ -1,8 +1,26 @@
-.vl {
+.vl-1 {
   border-left: 6px solid green;
   height: 100vh;
   position: absolute;
-  left: 50%;
+  left: 40%;
   margin-left: -3px;
   top: 0;
+}
+
+.vl-2 {
+  border-left: 6px solid green;
+  height: 100vh;
+  position: absolute;
+  left: 60%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.rxjs-operators {
+  display: inline-block;
+  margin-left: 110px;
+}
+
+.using-templates {
+  float: right;
 }

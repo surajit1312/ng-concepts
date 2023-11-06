@@ -12,7 +12,18 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'MyInjectService',
+      useFactory: () => {
+        return {
+          sayHello: () => {
+            console.log('Hello from MyInjectService');
+          },
+        };
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

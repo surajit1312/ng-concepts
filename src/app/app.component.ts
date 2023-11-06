@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
     const testClass: TestClass = new TestClass();
     console.log('Test class has been created', testClass);
   }
+
+  onClickTestClassDecorator(): void {
+    this.createClass();
+  }
 }
 
 @LogClass({ prefix: 'Hello' })

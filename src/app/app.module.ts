@@ -28,6 +28,17 @@ import { UsingTemplatesComponent } from './using-templates/using-templates.compo
         };
       },
     },
+    {
+      provide: 'MyDocumentToken',
+      useFactory:() => {
+        return {
+          getDocument: () => {
+            console.log('Hello from MyDocumentToken');
+          }
+        };
+      },
+    },
+    Window
   ],
   bootstrap: [AppComponent],
 })

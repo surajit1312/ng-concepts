@@ -7,7 +7,15 @@ import { MyLogger } from './decorators/method/logger.decorator';
 import { MyClass } from './decorators/class/prefix.decorator';
 import { MyProperty } from './decorators/properties/prop.decorator';
 import { MyParam } from './decorators/params/log-param.decorator';
-import { Observable, filter, map, mergeMap, of, switchMap } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  of,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -49,20 +57,44 @@ export class AppComponent implements OnInit {
     this.documentService.getDocument();
     this.companies$ = of(this.companies);
     this.user$ = of(this.users);
-    const filteredUser$ = this.user$
-      .pipe(
-        mergeMap((user: any) => {
-          return this.companies$
-            .pipe(map((companies: any) => {
-              return companies.filter((comp: any) => comp.companyId === user.companyId);
-            }));
-        })
-      );
+    const filteredUser$ = this.user$.pipe(
+      mergeMap((user: any) => {
+        return this.companies$.pipe(
+          map((companies: any) => {
+            return companies.filter(
+              (comp: any) => comp.companyId === user.companyId
+            );
+          })
+        );
+      })
+    );
 
-    filteredUser$.subscribe(data => {
+    filteredUser$.subscribe((data) => {
       console.log(data);
     });
+
+    // this.someObservable1$ = this.someService
+    //   .getVmcaRoot$(this.someParam)
+    //   .pipe(this.handleRequest(someParam2).bind(this));
+    // this.someObservable2$ = this.someService
+    //   .getTrustedRoots$(this.someParam)
+    //   .pipe(this.handleRequest(someParam2).bind(this));
   }
+
+  // private handleRequest(type: string) {
+  //   return (observable: Observable<ObserType | ObserType[]>) => {
+  //     return observable.pipe(
+  //       catchError((err) => {
+  //         const errorMessage = getErrorMessage(type);
+  //         this.someService.fetchError({
+  //           err,
+  //           errorMessage,
+  //         });
+  //         return of([]);
+  //       })
+  //     );
+  //   };
+  // }
 
   @LogMethod({ shouldLogTime: true })
   onClickTestMethodDecorator(): void {
